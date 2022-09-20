@@ -1,4 +1,4 @@
-"quiz-vote"
+"vote only"
 
 nodejs server connection 필요
 
