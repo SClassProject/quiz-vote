@@ -1,0 +1,21 @@
+{
+  "name": "quiz_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "http": "^0.0.1-security",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.19",
+    "save": "^2.5.0",
+    "socket.io": "^4.5.2"
+  }
+}
