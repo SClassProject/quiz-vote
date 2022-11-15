@@ -2,12 +2,10 @@
 
 //문제 작성후 저장 json형식으로 변환
 var q_list=[]; //json형태로 저장한 문제리스트
-// q_list[0]={question:"1번문제 답 1번", option1:"1", option2:"2", option3:"3", option4:"4", answer:"1"};//임시로 넣어둔거고 나중에 제거
-// q_list[1]={question:"2번문제 답 3번", option1:"1", option2:"2", option3:"3", option4:"4", answer:"3"};
 var count=0; //추가된 항목의 개수
 
 function saveData() {
-    var set_times=$('.formid').find('input[id=time]').val();//나중에 반드시 숫자만 입력되도록 정규식 처리
+    var set_times=$('.formid').find('input[id=time]').val();
 
     var qu="";
     var op1="";

@@ -10,7 +10,8 @@ const time_line = document.querySelector("header .time_line");
 const timeText = document.querySelector(".timer .time_left_txt");
 const timeCount = document.querySelector(".timer .timer_sec");
 
-const q_list=[{"question":"1번문제 답은 1번","option1":"1","option2":"2","option3":"3","option4":"4","answer":"1"},{"question":"2번문제 답은 3번","option1":"1","option2":"2","option3":"3","option4":"4","answer":"3"}];
+//여기에 저장된 문제가 들어와야함.
+const q_list=[{"question":"1번문제 답은 1번","option1":"1","option2":"2","option3":"3","option4":"4","answer":"1"},{"question":"2번문제 답은 3번","option1":"1","option2":"2","option3":"3","option4":"4","answer":"3"},{"question":"3번문제 답은 4번","option1":"1","option2":"2","option3":"3","option4":"4","answer":"4"}];
 
 
 // if startQuiz button clicked
@@ -24,7 +25,7 @@ exit_btn.onclick = ()=>{
 }
 
 // if continueQuiz button clicked
-continue_btn.onclick = ()=>{//한 페이지당 15초 말고 전체 누적해서 n초 설정하도록 수정필요
+continue_btn.onclick = ()=>{
     info_box.classList.remove("activeInfo"); //hide info box
     quiz_box.classList.add("activeQuiz"); //show quiz box
     showQuetions(0); //calling showQestions function
@@ -34,6 +35,7 @@ continue_btn.onclick = ()=>{//한 페이지당 15초 말고 전체 누적해서 
 }
 
 let timeValue =  15;
+let left_time;//추가. 남은시간으로 수정완료.
 let que_count = 0;
 let que_numb = 1;
 let userScore = 0;
@@ -48,7 +50,7 @@ const quit_quiz = result_box.querySelector(".buttons .quit");
 restart_quiz.onclick = ()=>{
     quiz_box.classList.add("activeQuiz"); //show quiz box
     result_box.classList.remove("activeResult"); //hide result box
-    timeValue = 15; 
+    timeValue = 30; 
     que_count = 0;
     que_numb = 1;
     userScore = 0;
@@ -80,7 +82,7 @@ next_btn.onclick = ()=>{
         queCounter(que_numb); //passing que_numb value to queCounter
         clearInterval(counter); //clear counter
         clearInterval(counterLine); //clear counterLine
-        startTimer(timeValue); //calling startTimer function
+        startTimer(left_time); //calling startTimer function
         startTimerLine(widthValue); //calling startTimerLine function
         timeText.textContent = "Time Left"; //change the timeText to Time Left
         next_btn.classList.remove("show"); //hide the next button
@@ -165,6 +167,7 @@ function startTimer(time){
     function timer(){
         timeCount.textContent = time; //changing the value of timeCount with time value
         time--; //decrement the time value
+        left_time=time;
         if(time < 9){ //if timer is less than 9
             let addZero = timeCount.textContent; 
             timeCount.textContent = "0" + addZero; //add a 0 before time value
